@@ -2,14 +2,14 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useMutation } from 'convex/react';
+import { useAction, useMutation } from 'convex/react';
 import { api } from '../../convex/_generated/api';
 
 export default function Analyse() {
   const [proteinFile, setProteinFile] = useState<File | null>(null);
   const [ligandFile, setLigandFile] = useState<File | null>(null);
-  const createAnalysis = useMutation(api.analysis.create);
-  const generateUploadUrl = useMutation(api.analysis.generateUploadUrl);
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const submitTamarindJob = useAction(api.tamarind.submitJob);
   const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -27,50 +27,22 @@ export default function Analyse() {
 
   const handleAnalyse = async () => {
     if (proteinFile && ligandFile) {
+      setIsAnalyzing(true);
       try {
-        // 1. Get separate upload URLs for both files
-        const proteinUploadUrl = await generateUploadUrl();
-        const ligandUploadUrl = await generateUploadUrl();
+        const proteinFileContent = await proteinFile.text();
+        const ligandFileContent = await ligandFile.text();
 
-        // 2. Upload the protein file
-        const proteinResult = await fetch(proteinUploadUrl, {
-          method: "POST",
-          headers: { "Content-Type": proteinFile.type || "application/octet-stream" },
-          body: proteinFile,
+        const result = await submitTamarindJob({
+          proteinFileContent,
+          ligandFileContent,
         });
 
-        if (!proteinResult.ok) {
-          throw new Error(`Protein file upload failed: ${await proteinResult.text()}`);
-        }
-        const { storageId: proteinFileId } = await proteinResult.json();
-
-        // 3. Upload the ligand file
-        const ligandResult = await fetch(ligandUploadUrl, {
-          method: "POST",
-          headers: { "Content-Type": ligandFile.type || "application/octet-stream" },
-          body: ligandFile,
-        });
-
-        if (!ligandResult.ok) {
-          throw new Error(`Ligand file upload failed: ${await ligandResult.text()}`);
-        }
-        const { storageId: ligandFileId } = await ligandResult.json();
-
-        if (!proteinFileId || !ligandFileId) {
-          throw new Error("File upload succeeded, but Storage ID was missing.");
-        }
-
-        // 4. Create the analysis record
-        const analysisId = await createAnalysis({
-          proteinFileId,
-          ligandFileId,
-          proteinFileName: proteinFile.name,
-          ligandFileName: ligandFile.name,
-        });
-        router.push(`/analysis/${analysisId}`);
+        alert(`Job submitted successfully! Job ID: ${result.jobId}`);
       } catch (error) {
-        console.error("Analysis creation failed:", error);
-        alert("Error: Could not upload files. Please check the console for details.");
+        console.error("Failed to submit job to Tamarind:", error);
+        alert(`Error: ${(error as Error).message}`);
+      } finally {
+        setIsAnalyzing(false);
       }
     } else {
       alert('Please upload both a protein and a ligand file.');

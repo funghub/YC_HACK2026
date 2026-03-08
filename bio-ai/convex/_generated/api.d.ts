@@ -9,6 +9,7 @@
  */
 
 import type * as analysis from "../analysis.js";
+import type * as tamarind from "../tamarind.js";
 
 import type {
   ApiFromModules,
@@ -18,6 +19,7 @@ import type {
 
 declare const fullApi: ApiFromModules<{
   analysis: typeof analysis;
+  tamarind: typeof tamarind;
 }>;
 
 /**
