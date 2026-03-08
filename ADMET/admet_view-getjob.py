@@ -8,21 +8,21 @@ api_key = api_key
 headers = {'x-api-key': api_key}
 base_url = "https://app.tamarind.bio/api/"
 
-# view the job
+# VIEW THE JOB
 params = {
 }
 response = requests.get(base_url + "jobs", headers=headers, params=params)
 print(response.json())
 
 
-# get results
-jobName = "myJobName"
+# GET RESULTS
+jobName = "myJobName" # add job name here
 
-zip_path = os.path.join("./ADMET","results", f"{jobName}", f"{jobName}.zip") # folder to save file
+zip_path = os.path.join("./ADMET","results", f"{jobName}", f"{jobName}.zip") # file path for jobname
 # savePath = f"./{jobName}.zip"
-zip_dir = os.path.join("./ADMET","results", f"{jobName}")
-save_folder = f"./ADMET/results/{jobName}"
-os.makedirs(zip_dir, exist_ok=True)
+save_folder = os.path.join("./ADMET","results", f"{jobName}") # this creates the dir with job name for the file to save to
+# save_folder = f"./ADMET/results/{jobName}"
+os.makedirs(save_folder, exist_ok=True)
 
 params = {
     "jobName": jobName
