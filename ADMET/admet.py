@@ -9,13 +9,34 @@ headers = {'x-api-key': api_key}
 base_url = "https://app.tamarind.bio/api/"
 
 
-
-params = {
-  "jobName": "myJobName",
-  "type": "admet",
-  "settings": {
-    "smilesStrings": ['CC(=O)OC1=CC=CC=C1C(=O)O']
+def get_predictions(myJobName, smiles):
+  params = {
+    "jobName": myJobName,
+    "type": "admet",
+    "settings": {
+      "smilesStrings": [smiles]
+    }
   }
-}
-response = requests.post(base_url + "submit-job", headers=headers, json=params)
-print(response.text)
+  response = requests.post(base_url + "submit-job", headers=headers, json=params)
+  print(response.text)
+
+
+from pathlib import Path
+
+smi_folder = Path("ADMET/test_samples_smiles")
+
+for smi_file in smi_folder.glob("*.smi"):
+    filename_stem = smi_file.stem   # 👉 "samples_1"
+
+    with open(smi_file, "r") as f:
+        for line in f:
+            smiles = line.strip().split()[0]   # first column is SMILES
+            
+            print("File:", filename_stem)
+            print("SMILES:", smiles)
+
+            get_predictions(filename_stem, smiles)
+
+
+
+

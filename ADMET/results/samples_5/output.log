@@ -1,0 +1,236 @@
+Running job samples_5
+
+Loading pretrained parameter "encoder.encoder.0.cached_zero_vector".
+Loading pretrained parameter "encoder.encoder.0.W_i.weight".
+Loading pretrained parameter "encoder.encoder.0.W_h.weight".
+Loading pretrained parameter "encoder.encoder.0.W_o.weight".
+Loading pretrained parameter "encoder.encoder.0.W_o.bias".
+Loading pretrained parameter "readout.1.weight".
+Loading pretrained parameter "readout.1.bias".
+Loading pretrained parameter "readout.4.weight".
+Loading pretrained parameter "readout.4.bias".
+Moving model to cuda
+Loading pretrained parameter "encoder.encoder.0.cached_zero_vector".
+Loading pretrained parameter "encoder.encoder.0.W_i.weight".
+Loading pretrained parameter "encoder.encoder.0.W_h.weight".
+Loading pretrained parameter "encoder.encoder.0.W_o.weight".
+Loading pretrained parameter "encoder.encoder.0.W_o.bias".
+Loading pretrained parameter "readout.1.weight".
+Loading pretrained parameter "readout.1.bias".
+Loading pretrained parameter "readout.4.weight".
+Loading pretrained parameter "readout.4.bias".
+Moving model to cuda
+Loading pretrained parameter "encoder.encoder.0.cached_zero_vector".
+Loading pretrained parameter "encoder.encoder.0.W_i.weight".
+Loading pretrained parameter "encoder.encoder.0.W_h.weight".
+Loading pretrained parameter "encoder.encoder.0.W_o.weight".
+Loading pretrained parameter "encoder.encoder.0.W_o.bias".
+Loading pretrained parameter "readout.1.weight".
+Loading pretrained parameter "readout.1.bias".
+Loading pretrained parameter "readout.4.weight".
+Loading pretrained parameter "readout.4.bias".
+Moving model to cuda
+Loading pretrained parameter "encoder.encoder.0.cached_zero_vector".
+Loading pretrained parameter "encoder.encoder.0.W_i.weight".
+Loading pretrained parameter "encoder.encoder.0.W_h.weight".
+Loading pretrained parameter "encoder.encoder.0.W_o.weight".
+Loading pretrained parameter "encoder.encoder.0.W_o.bias".
+Loading pretrained parameter "readout.1.weight".
+Loading pretrained parameter "readout.1.bias".
+Loading pretrained parameter "readout.4.weight".
+Loading pretrained parameter "readout.4.bias".
+Moving model to cuda
+Loading pretrained parameter "encoder.encoder.0.cached_zero_vector".
+Loading pretrained parameter "encoder.encoder.0.W_i.weight".
+Loading pretrained parameter "encoder.encoder.0.W_h.weight".
+Loading pretrained parameter "encoder.encoder.0.W_o.weight".
+Loading pretrained parameter "encoder.encoder.0.W_o.bias".
+Loading pretrained parameter "readout.1.weight".
+Loading pretrained parameter "readout.1.bias".
+Loading pretrained parameter "readout.4.weight".
+Loading pretrained parameter "readout.4.bias".
+Moving model to cuda
+Loading pretrained parameter "encoder.encoder.0.cached_zero_vector".
+Loading pretrained parameter "encoder.encoder.0.W_i.weight".
+Loading pretrained parameter "encoder.encoder.0.W_h.weight".
+Loading pretrained parameter "encoder.encoder.0.W_o.weight".
+Loading pretrained parameter "encoder.encoder.0.W_o.bias".
+Loading pretrained parameter "readout.1.weight".
+Loading pretrained parameter "readout.1.bias".
+Loading pretrained parameter "readout.4.weight".
+Loading pretrained parameter "readout.4.bias".
+Moving model to cuda
+Loading pretrained parameter "encoder.encoder.0.cached_zero_vector".
+Loading pretrained parameter "encoder.encoder.0.W_i.weight".
+Loading pretrained parameter "encoder.encoder.0.W_h.weight".
+Loading pretrained parameter "encoder.encoder.0.W_o.weight".
+Loading pretrained parameter "encoder.encoder.0.W_o.bias".
+Loading pretrained parameter "readout.1.weight".
+Loading pretrained parameter "readout.1.bias".
+Loading pretrained parameter "readout.4.weight".
+Loading pretrained parameter "readout.4.bias".
+Moving model to cuda
+Loading pretrained parameter "encoder.encoder.0.cached_zero_vector".
+Loading pretrained parameter "encoder.encoder.0.W_i.weight".
+Loading pretrained parameter "encoder.encoder.0.W_h.weight".
+Loading pretrained parameter "encoder.encoder.0.W_o.weight".
+Loading pretrained parameter "encoder.encoder.0.W_o.bias".
+Loading pretrained parameter "readout.1.weight".
+Loading pretrained parameter "readout.1.bias".
+Loading pretrained parameter "readout.4.weight".
+Loading pretrained parameter "readout.4.bias".
+Moving model to cuda
+Loading pretrained parameter "encoder.encoder.0.cached_zero_vector".
+Loading pretrained parameter "encoder.encoder.0.W_i.weight".
+Loading pretrained parameter "encoder.encoder.0.W_h.weight".
+Loading pretrained parameter "encoder.encoder.0.W_o.weight".
+Loading pretrained parameter "encoder.encoder.0.W_o.bias".
+Loading pretrained parameter "readout.1.weight".
+Loading pretrained parameter "readout.1.bias".
+Loading pretrained parameter "readout.4.weight".
+Loading pretrained parameter "readout.4.bias".
+Moving model to cuda
+Loading pretrained parameter "encoder.encoder.0.cached_zero_vector".
+Loading pretrained parameter "encoder.encoder.0.W_i.weight".
+Loading pretrained parameter "encoder.encoder.0.W_h.weight".
+Loading pretrained parameter "encoder.encoder.0.W_o.weight".
+Loading pretrained parameter "encoder.encoder.0.W_o.bias".
+Loading pretrained parameter "readout.1.weight".
+Loading pretrained parameter "readout.1.bias".
+Loading pretrained parameter "readout.4.weight".
+Loading pretrained parameter "readout.4.bias".
+Moving model to cuda
+
+SMILES to Mol:   0%|          | 0/1 [00:00<?, ?it/s]
+SMILES to Mol: 100%|██████████| 1/1 [00:00<00:00, 1423.73it/s]
+
+Computing physchem properties:   0%|          | 0/1 [00:00<?, ?it/s]
+Computing physchem properties: 100%|██████████| 1/1 [00:00<00:00, 382.97it/s]
+
+RDKit fingerprints:   0%|          | 0/1 [00:00<?, ?it/s]
+RDKit fingerprints: 100%|██████████| 1/1 [00:00<00:00, 12.61it/s]
+/usr/local/lib/python3.10/dist-packages/torch/utils/data/dataloader.py:558: UserWarning: This DataLoader will create 8 worker processes in total. Our suggested max number of worker in current system is 4, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+
+model ensembles:   0%|          | 0/2 [00:00<?, ?it/s]
+
+individual models:   0%|          | 0/5 [00:00<?, ?it/s][A
+
+
+  0%|          | 0/1 [00:00<?, ?it/s][A[A
+
+
+100%|██████████| 1/1 [00:17<00:00, 17.69s/it][A[A
+
+
+                                             [A[A
+
+individual models:  20%|██        | 1/5 [00:17<01:10, 17.73s/it][A
+
+
+  0%|          | 0/1 [00:00<?, ?it/s][A[A
+
+
+100%|██████████| 1/1 [00:00<00:00,  1.28it/s][A[A
+
+
+                                             [A[A
+
+individual models:  40%|████      | 2/5 [00:18<00:23,  7.78s/it][A
+
+
+  0%|          | 0/1 [00:00<?, ?it/s][A[A
+
+
+100%|██████████| 1/1 [00:00<00:00,  1.25it/s][A[A
+
+
+                                             [A[A
+
+individual models:  60%|██████    | 3/5 [00:19<00:09,  4.61s/it][A
+
+
+  0%|          | 0/1 [00:00<?, ?it/s][A[A
+
+
+100%|██████████| 1/1 [00:00<00:00,  1.29it/s][A[A
+
+
+                                             [A[A
+
+individual models:  80%|████████  | 4/5 [00:20<00:03,  3.11s/it][A
+
+
+  0%|          | 0/1 [00:00<?, ?it/s][A[A
+
+
+100%|██████████| 1/1 [00:00<00:00,  1.27it/s][A[A
+
+
+                                             [A[A
+
+individual models: 100%|██████████| 5/5 [00:21<00:00,  2.29s/it][A
+individual models: 100%|██████████| 5/5 [00:21<00:00,  4.20s/it]
+
+model ensembles:  50%|█████     | 1/2 [00:21<00:21, 21.02s/it]
+
+individual models:   0%|          | 0/5 [00:00<?, ?it/s][A
+
+
+  0%|          | 0/1 [00:00<?, ?it/s][A[A
+
+
+100%|██████████| 1/1 [00:00<00:00,  1.28it/s][A[A
+
+
+                                             [A[A
+
+individual models:  20%|██        | 1/5 [00:00<00:03,  1.22it/s][A
+
+
+  0%|          | 0/1 [00:00<?, ?it/s][A[A
+
+
+100%|██████████| 1/1 [00:00<00:00,  1.29it/s][A[A
+
+
+                                             [A[A
+
+individual models:  40%|████      | 2/5 [00:01<00:02,  1.23it/s][A
+
+
+  0%|          | 0/1 [00:00<?, ?it/s][A[A
+
+
+100%|██████████| 1/1 [00:00<00:00,  1.31it/s][A[A
+
+
+                                             [A[A
+
+individual models:  60%|██████    | 3/5 [00:02<00:01,  1.24it/s][A
+
+
+  0%|          | 0/1 [00:00<?, ?it/s][A[A
+
+
+100%|██████████| 1/1 [00:00<00:00,  1.28it/s][A[A
+
+
+                                             [A[A
+
+individual models:  80%|████████  | 4/5 [00:03<00:00,  1.23it/s][A
+
+
+  0%|          | 0/1 [00:00<?, ?it/s][A[A
+
+
+100%|██████████| 1/1 [00:00<00:00,  1.31it/s][A[A
+
+
+                                             [A[A
+
+individual models: 100%|██████████| 5/5 [00:04<00:00,  1.24it/s][A
+individual models: 100%|██████████| 5/5 [00:04<00:00,  1.24it/s]
+
+model ensembles: 100%|██████████| 2/2 [00:25<00:00, 11.04s/it]
+model ensembles: 100%|██████████| 2/2 [00:25<00:00, 12.54s/it]
