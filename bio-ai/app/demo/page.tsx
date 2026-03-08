@@ -302,10 +302,32 @@ export default function DemoPage() {
             <button onClick={() => setActiveTab('Ligand Options')} style={{ background: activeTab === 'Ligand Options' ? '#333' : 'none', border: 'none', color: '#eee', padding: '0.5rem 1rem', cursor: 'pointer' }}>Ligand Options</button>
             <button onClick={() => setActiveTab('Parameters')} style={{ background: activeTab === 'Parameters' ? '#333' : 'none', border: 'none', color: '#eee', padding: '0.5rem 1rem', cursor: 'pointer' }}>Parameters</button>
           </div>
-          <div style={{ padding: '1rem', backgroundColor: '#222', marginTop: '1rem', borderRadius: '8px' }}>
-            {activeTab === 'Protein Structure' && <div>Details about the protein structure...</div>}
-            {activeTab === 'Ligand Options' && <div>Options for the ligand...</div>}
-            {activeTab === 'Parameters' && <div>Parameters for the analysis...</div>}
+          <div style={{ padding: '1rem', backgroundColor: '#222', marginTop: '1rem', borderRadius: '8px', minHeight: '150px' }}>
+            {activeTab === 'Protein Structure' && (
+              <div>
+                <h3 style={{ fontSize: '1.2rem', fontWeight: 'bold', color: '#eee' }}>PDB Protein Structure</h3>
+                <p style={{ marginTop: '1rem', color: '#aaa' }}>Visit the Protein Data Bank: <a href="https://www.rcsb.org/" target="_blank" rel="noopener noreferrer" style={{ color: '#0070f3' }}>https://www.rcsb.org/</a></p>
+                <p style={{ marginTop: '0.5rem', color: '#aaa' }}>Enter your protein ID and download the corresponding PDB file.</p>
+              </div>
+            )}
+            {activeTab === 'Ligand Options' && (
+              <div>
+                <h3 style={{ fontSize: '1.2rem', fontWeight: 'bold', color: '#eee' }}>Ligand Options</h3>
+                <p style={{ marginTop: '1rem', color: '#aaa' }}>In the PDB entry, go to the “Ligand” tab.</p>
+                <p style={{ marginTop: '0.5rem', color: '#aaa' }}>Click “Ligand Definition and Summary” tab to view available ligand options.</p>
+                <p style={{ marginTop: '0.5rem', color: '#aaa' }}>Download the SDF file for your reference ligand.</p>
+              </div>
+            )}
+            {activeTab === 'Parameters' && (
+              <div>
+                <h3 style={{ fontSize: '1.2rem', fontWeight: 'bold', color: '#eee' }}>Parameters</h3>
+                <ul style={{ listStyle: 'disc', paddingLeft: '20px', marginTop: '1rem', color: '#aaa' }}>
+                  <li style={{ marginBottom: '0.5rem' }}><strong style={{ color: '#eee' }}>Number of Samples:</strong> How many ligand candidates DrugFlow will generate. Default: 5 candidates per job.</li>
+                  <li style={{ marginBottom: '0.5rem' }}><strong style={{ color: '#eee' }}>Number of Batches:</strong> How many separate jobs run in parallel.</li>
+                  <li><strong style={{ color: '#eee' }}>Distance Cutoff:</strong> Defines the binding pocket radius around the reference ligand. Default: 8 Å, used to score how well the ligand fits in the protein.</li>
+                </ul>
+              </div>
+            )}
           </div>
         </div>
       </section>
