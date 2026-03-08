@@ -293,8 +293,14 @@ export default function DemoPage() {
       <section style={{ marginTop: '2rem' }}>
         <h2 style={{ fontSize: '1.8rem', borderBottom: '1px solid #333', paddingBottom: '0.5rem' }}>Input data</h2>
         <div style={{ display: 'flex', gap: '2rem', marginTop: '1rem' }}>
-          {proteinContent && <ThreeDMolViewer fileContent={proteinContent} format="pdb" />}
-          {ligandContent && <ThreeDMolViewer fileContent={ligandContent} format="sdf" />}
+          <div>
+            {proteinContent && <ThreeDMolViewer fileContent={proteinContent} format="pdb" />}
+            <p style={{ textAlign: 'center', color: '#eee', marginTop: '0.5rem' }}>6W70</p>
+          </div>
+          <div>
+            {ligandContent && <ThreeDMolViewer fileContent={ligandContent} format="sdf" />}
+            <p style={{ textAlign: 'center', color: '#eee', marginTop: '0.5rem' }}>SO4</p>
+          </div>
         </div>
         <div style={{ marginTop: '1rem' }}>
           <div style={{ display: 'flex', gap: '1rem', borderBottom: '1px solid #333' }}>
