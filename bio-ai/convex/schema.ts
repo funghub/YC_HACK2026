@@ -5,5 +5,7 @@ export default defineSchema({
   analysis: defineTable({
     proteinFileId: v.id("_storage"),
     ligandFileId: v.id("_storage"),
+    proteinFileName: v.string(),
+    ligandFileName: v.string(),
   }),
 });

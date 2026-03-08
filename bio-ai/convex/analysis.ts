@@ -9,11 +9,15 @@ export const create = mutation({
   args: {
     proteinFileId: v.id("_storage"),
     ligandFileId: v.id("_storage"),
+    proteinFileName: v.string(),
+    ligandFileName: v.string(),
   },
   handler: async (ctx, args) => {
     const analysisId = await ctx.db.insert("analysis", {
       proteinFileId: args.proteinFileId,
       ligandFileId: args.ligandFileId,
+      proteinFileName: args.proteinFileName,
+      ligandFileName: args.ligandFileName,
     });
     return analysisId;
   },

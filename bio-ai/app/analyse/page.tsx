@@ -64,6 +64,8 @@ export default function Analyse() {
         const analysisId = await createAnalysis({
           proteinFileId,
           ligandFileId,
+          proteinFileName: proteinFile.name,
+          ligandFileName: ligandFile.name,
         });
         router.push(`/analysis/${analysisId}`);
       } catch (error) {

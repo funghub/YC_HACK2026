@@ -52,16 +52,16 @@ export default function ReportsPage() {
           <thead>
             <tr>
               <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>Report ID</th>
-              <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>Protein File ID</th>
-              <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>Ligand File ID</th>
+              <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>Protein File</th>
+              <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>Ligand File</th>
             </tr>
           </thead>
           <tbody>
             {reports?.map((report) => (
               <tr key={report._id} onClick={() => router.push(`/analysis/${report._id}`)} style={{ cursor: 'pointer' }}>
                 <td style={{ border: '1px solid #ddd', padding: '8px' }}>{report._id}</td>
-                <td style={{ border: '1px solid #ddd', padding: '8px' }}>{report.proteinFileId}</td>
-                <td style={{ border: '1px solid #ddd', padding: '8px' }}>{report.ligandFileId}</td>
+                <td style={{ border: '1px solid #ddd', padding: '8px' }}>{report.proteinFileName}</td>
+                <td style={{ border: '1px solid #ddd', padding: '8px' }}>{report.ligandFileName}</td>
               </tr>
             ))}
           </tbody>

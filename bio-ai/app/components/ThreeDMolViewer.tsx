@@ -1,7 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
-import Script from 'next/script';
+import { useEffect, useRef } from 'react';
 
 declare global {
   namespace $3Dmol {
@@ -10,63 +9,44 @@ declare global {
 }
 
 interface ThreeDMolViewerProps {
-  fileUrl: string | null;
+  fileContent: string | null;
   format: 'pdb' | 'sdf';
 }
 
-export default function ThreeDMolViewer({ fileUrl, format }: ThreeDMolViewerProps) {
+export default function ThreeDMolViewer({ fileContent, format }: ThreeDMolViewerProps) {
   const viewerRef = useRef<HTMLDivElement>(null);
   const viewerInstanceRef = useRef<any>(null);
-  const [isScriptLoaded, setIsScriptLoaded] = useState(false);
 
   useEffect(() => {
-    // Initialize viewer when the script is loaded
-    if (isScriptLoaded && viewerRef.current && !viewerInstanceRef.current && window.$3Dmol) {
+    // Wait until the 3Dmol library is loaded, content is available, and the viewer is mounted
+    if (!window.$3Dmol || !fileContent || !viewerRef.current) {
+      return; // Exit if not ready
+    }
+
+    // Initialize viewer instance if it doesn't exist
+    if (!viewerInstanceRef.current) {
       viewerInstanceRef.current = $3Dmol.createViewer(viewerRef.current, {
         backgroundColor: 'white',
       });
-      viewerInstanceRef.current.render();
     }
 
-    // Load data when the viewer and fileUrl are ready
-    if (viewerInstanceRef.current && fileUrl) {
-      const loadData = async () => {
-        try {
-          const response = await fetch(fileUrl);
-          if (!response.ok) {
-            throw new Error(`Failed to fetch file: ${response.statusText}`);
-          }
-          const fileContent = await response.text();
+    const viewer = viewerInstanceRef.current;
+    viewer.clear();
+    viewer.addModel(fileContent, format);
 
-          const viewer = viewerInstanceRef.current;
-          viewer.clear();
-          viewer.addModel(fileContent, format);
-
-          if (format === 'pdb') {
-            viewer.setStyle({}, { cartoon: { color: 'spectrum' } });
-          } else {
-            viewer.setStyle({}, { sphere: {} });
-          }
-
-          viewer.zoomTo();
-          viewer.render();
-        } catch (error) {
-          console.error('Error loading data in 3Dmol viewer:', error);
-        }
-      };
-
-      loadData();
+    if (format === 'pdb') {
+      viewer.setStyle({}, { cartoon: { color: 'spectrum' } });
+    } else {
+      viewer.setStyle({}, { stick: { colorscheme: 'element' } });
     }
-  }, [isScriptLoaded, fileUrl, format]);
+
+    viewer.zoomTo();
+    viewer.render();
+
+  }, [fileContent, format]); // Re-run when content or format changes
 
   return (
-    <>
-      <Script
-        src="https://3Dmol.org/build/3Dmol-min.js"
-        strategy="lazyOnload"
-        onLoad={() => setIsScriptLoaded(true)}
-      />
-      <div ref={viewerRef} style={{ height: '400px', width: '400px', position: 'relative', border: '1px solid #ccc' }} />
-    </>
+    <div ref={viewerRef} style={{ height: '400px', width: '400px', position: 'relative', border: '1px solid #ccc' }} />
   );
 }
+

@@ -12,6 +12,8 @@ export default function AnalysisPage({ params }: { params: Promise<{ id: Id<"ana
   const analysis = useQuery(api.analysis.get, { id });
   const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [proteinContent, setProteinContent] = useState<string | null>(null);
+  const [ligandContent, setLigandContent] = useState<string | null>(null);
 
   useEffect(() => {
     const isAuthenticated = localStorage.getItem('isAuthenticated');
@@ -20,12 +22,46 @@ export default function AnalysisPage({ params }: { params: Promise<{ id: Id<"ana
     }
   }, [router]);
 
+  useEffect(() => {
+    const fetchContent = async () => {
+      console.log("Analysis data received:", analysis);
+      if (analysis && analysis.proteinUrl) {
+        try {
+          const response = await fetch(analysis.proteinUrl);
+          if (response.ok) {
+            const content = await response.text();
+            setProteinContent(content);
+          }
+        } catch (error) {
+          console.error("Failed to fetch protein content", error);
+        }
+      }
+      if (analysis && analysis.ligandUrl) {
+        console.log("Fetching ligand from URL:", analysis.ligandUrl);
+        try {
+          const response = await fetch(analysis.ligandUrl);
+          if (response.ok) {
+            const content = await response.text();
+            console.log("Ligand content fetched successfully. Length:", content.length);
+            setLigandContent(content);
+          } else {
+            console.error("Failed to fetch ligand file, status:", response.status);
+          }
+        } catch (error) {
+          console.error("Failed to fetch ligand content", error);
+        }
+      }
+    };
+
+    fetchContent();
+  }, [analysis]);
+
   const handleLogout = () => {
     localStorage.removeItem('isAuthenticated');
     router.push('/signin');
   };
 
-  if (!analysis) {
+  if (!analysis || !analysis.proteinFileName || !analysis.ligandFileName) {
     return <div>Loading...</div>;
   }
 
@@ -60,14 +96,14 @@ export default function AnalysisPage({ params }: { params: Promise<{ id: Id<"ana
         <div style={{ display: 'flex', gap: '20px', marginTop: '2rem' }}>
           <div>
             <h2>Protein Structure</h2>
-            <ThreeDMolViewer fileUrl={analysis.proteinUrl} format="pdb" />
+            <ThreeDMolViewer fileContent={proteinContent} format={analysis.proteinFileName.split('.').pop() as 'pdb' | 'sdf'} />
             <p style={{ marginTop: '10px' }}>
               Protein File: <a href={analysis.proteinUrl || '#'} target="_blank" rel="noopener noreferrer">Download</a>
             </p>
           </div>
           <div>
             <h2>Ligand Structure</h2>
-            <ThreeDMolViewer fileUrl={analysis.ligandUrl} format="sdf" />
+            <ThreeDMolViewer fileContent={ligandContent} format={analysis.ligandFileName.split('.').pop() as 'pdb' | 'sdf'} />
             <p style={{ marginTop: '10px' }}>
               Ligand File: <a href={analysis.ligandUrl || '#'} target="_blank" rel="noopener noreferrer">Download</a>
             </p>
