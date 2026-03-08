@@ -1,15 +1,23 @@
-import requests
+import os
 
-api_key = "insert-api-key-here"
-headers = {'x-api-key': api_key}
-base_url = "https://app.tamarind.bio/api/"
+api_key = os.getenv("tamarind_api")
 
-params = {
-  "jobName": "myJobName",
-  "type": "admet",
-  "settings": {
-    "smilesStrings": []
-  }
-}
-response = requests.post(base_url + "submit-job", headers=headers, json=params)
-print(response.text)
+
+
+
+
+# import requests
+
+# api_key = "insert-api-key-here"
+# headers = {'x-api-key': api_key}
+# base_url = "https://app.tamarind.bio/api/"
+
+# params = {
+#   "jobName": "myJobName",
+#   "type": "admet",
+#   "settings": {
+#     "smilesStrings": []
+#   }
+# }
+# response = requests.post(base_url + "submit-job", headers=headers, json=params)
+# print(response.text)
