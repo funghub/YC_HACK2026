@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react';
 import ThreeDMolViewer from '../components/ThreeDMolViewer';
 
+import InfoDialog from '../components/InfoDialog';
+
 // Hardcoded data for the demo page
 const ligandSDF = `N3A_ideal
   Mrv2205 03252013492D
@@ -245,6 +247,7 @@ export default function DemoPage() {
   const [activeLigand, setActiveLigand] = useState<keyof typeof ligandData>('Ligand 1');
   const [proteinContent, setProteinContent] = useState<string | null>(null);
   const [ligandContent, setLigandContent] = useState<string | null>(null);
+  const [isInfoDialogOpen, setIsInfoDialogOpen] = useState(false);
 
   useEffect(() => {
     const fetchProtein = async () => {
@@ -373,9 +376,11 @@ export default function DemoPage() {
             <ThreeDMolViewer fileContent={ligandData[activeLigand].sdf} format="sdf" />
             <img src={ligandData[activeLigand].radarImg} alt="Radar chart" style={{ borderRadius: '8px', width: '400px', height: '400px' }} />
           </div>
-          <p style={{ marginTop: '1rem' }}>How do I read this summary? <a href="#" style={{ color: '#0070f3' }}>Click to expand</a></p>
+          <p style={{ marginTop: '1rem' }}>How do I read this summary? <a href="#" onClick={(e) => { e.preventDefault(); setIsInfoDialogOpen(true); }} style={{ color: '#0070f3' }}>Click to expand</a></p>
         </div>
       </section>
+
+      {isInfoDialogOpen && <InfoDialog onClose={() => setIsInfoDialogOpen(false)} />}
     </div>
   );
 }
