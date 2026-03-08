@@ -6,11 +6,11 @@ def split_sdf(input_file, output_prefix):
     suppl = Chem.SDMolSupplier(input_file)
     for i, mol in enumerate(suppl, start=1):
         if mol is None:
-            print(f"Invalid molecule at index {i}. Skipping.")
+            print(f"Invalid molecule at index {i}. Skipping.") # Skipping molecule if it is chemically invalid
         if mol is not None:
             writer = Chem.SDWriter(f"{output_prefix}_{i}.sdf")
             writer.write(mol)
             writer.close()
     print('splitting complete')
 
-split_sdf('samples.sdf','samples')
+split_sdf('samples_SO4.sdf','samples')
