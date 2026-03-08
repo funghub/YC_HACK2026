@@ -1,6 +1,6 @@
 import os
 
-api_key = os.getenv("tamarind_api")
+api_key = os.getenv("tamarind_api") # this is the variable I names in my ./bashrc file for my api key
 
 import requests
 

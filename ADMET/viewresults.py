@@ -1,12 +1,16 @@
 import os, zipfile
 
-api_key = os.getenv("tamarind_api")
+api_key = os.getenv("tamarind_api") # this is the variable I names in my ./bashrc file for my api key
 
 import requests
 
 api_key = api_key
 headers = {'x-api-key': api_key}
 base_url = "https://app.tamarind.bio/api/"
+
+'''
+After running admet.py, you can run this code to retrieve the results for the job
+'''
 
 # VIEW THE JOB
 params = {
