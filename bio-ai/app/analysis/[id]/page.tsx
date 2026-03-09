@@ -139,15 +139,15 @@ export default function AnalysisPage({ params }: { params: Promise<{ id: Id<"ana
         <p>Analysis ID: {analysis._id}</p>
         {analysis.jobName && <p>Job Name: {analysis.jobName}</p>}
         
-        <div style={{ display: 'flex', gap: '20px', marginTop: '2rem' }}>
-          <div>
+        <div style={{ display: 'flex', gap: '20px', marginTop: '2rem', width: '100%', justifyContent: 'center' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <h2>Protein Structure</h2>
             <ThreeDMolViewer fileContent={proteinContent} format={analysis.proteinFileName.split('.').pop() as 'pdb' | 'sdf'} />
             <p style={{ marginTop: '10px' }}>
               Protein File: <a href={analysis.proteinUrl || '#'} target="_blank" rel="noopener noreferrer">Download</a>
             </p>
           </div>
-          <div>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <h2>Ligand Structure</h2>
             <ThreeDMolViewer fileContent={ligandContent} format={analysis.ligandFileName.split('.').pop() as 'pdb' | 'sdf'} />
             <p style={{ marginTop: '10px' }}>
