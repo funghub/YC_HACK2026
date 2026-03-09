@@ -33,12 +33,25 @@ def extract_scores(myJobName):
     labels = list(axes.keys()) + ["Non-Toxic"]
     values = [float(row[col]) for col in axes.values()] + [non_toxic]
 
-    print(labels)
-    print(values)
+    # print(labels)
+    # print(values)
 
-    print('BBB_Martins:', df.loc[0,'BBB_Martins'])
+    # print('BBB_Martins:', df.loc[0,'BBB_Martins'])
+    print()
     print('BBB_Martins_drugbank_approved_percentile:', df.loc[0,'BBB_Martins_drugbank_approved_percentile'])
 
+    print('hERG_drugbank_approved_percentile:', df.loc[0,'hERG_drugbank_approved_percentile'])
+
+    print('Bioavailability_Ma_drugbank_approved_percentile:', df.loc[0,'Bioavailability_Ma_drugbank_approved_percentile'])
+
+    print('Average Percentile for Non_Toxic:', non_toxic)
+
+    print('\nall non-toxic percentiles:')
+    print('ClinTox_drugbank_approved_percentile:', df.loc[0,'ClinTox_drugbank_approved_percentile'])
+    print('AMES_drugbank_approved_percentile:', df.loc[0,'AMES_drugbank_approved_percentile'])
+    print('DILI_drugbank_approved_percentile:', df.loc[0,'DILI_drugbank_approved_percentile'])
+    print('Carcinogens_Lagunin_drugbank_approved_percentile:', df.loc[0,'Carcinogens_Lagunin_drugbank_approved_percentile'])
+    print('Skin_Reaction_drugbank_approved_percentile:', df.loc[0,'Skin_Reaction_drugbank_approved_percentile'])
 
     # print(df.columns)
 
