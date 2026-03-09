@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import ThreeDMolViewer from '../components/ThreeDMolViewer';
 
 import InfoDialog from '../components/InfoDialog';
+import HeatmapInfoDialog from '../components/HeatmapInfoDialog';
 
 // Hardcoded data for the demo page
 const ligandSDF = `N3A_ideal
@@ -252,6 +253,7 @@ export default function DemoPage() {
   const [proteinContent, setProteinContent] = useState<string | null>(null);
   const [ligandContent, setLigandContent] = useState<string | null>(null);
   const [isInfoDialogOpen, setIsInfoDialogOpen] = useState(false);
+  const [isHeatmapInfoDialogOpen, setIsHeatmapInfoDialogOpen] = useState(false);
 
   useEffect(() => {
     const fetchProtein = async () => {
@@ -358,7 +360,7 @@ export default function DemoPage() {
         <h2 style={{ fontSize: '1.8rem', borderBottom: '1px solid #333', paddingBottom: '0.5rem' }}>Score heatmap</h2>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginTop: '1rem' }}>
           <div>
-            <p>How to read this heatmap? <a href="#" style={{ color: '#0070f3' }}>Click to expand</a></p>
+            <p>How to read this heatmap? <a href="#" onClick={(e) => { e.preventDefault(); setIsHeatmapInfoDialogOpen(true); }} style={{ color: '#0070f3' }}>Click to expand</a></p>
             <img src="/example_heatmap_black.png" alt="Heatmap" style={{ width: '100%', borderRadius: '8px' }} />
           </div>
           <div>
@@ -386,6 +388,7 @@ export default function DemoPage() {
       </section>
 
       {isInfoDialogOpen && <InfoDialog onClose={() => setIsInfoDialogOpen(false)} />}
+      {isHeatmapInfoDialogOpen && <HeatmapInfoDialog onClose={() => setIsHeatmapInfoDialogOpen(false)} />}
     </div>
   );
 }
