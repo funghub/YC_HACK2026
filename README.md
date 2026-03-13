@@ -2,6 +2,32 @@
 
 This repository contains the source code for a web application developed for the YC Bio x AI Hackathon on March 8th, 2026. The application provides a platform for computational drug discovery, allowing users to analyze protein-ligand interactions, predict novel ligand candidates, and review detailed ADMET (Absorption, Distribution, Metabolism, Excretion, and Toxicity) prediction scores.
 
+## Project Description
+
+Our team leveraged bioinformatics machine learning tools (DrugFlow, PLACER, and ADMET-AI) to build a centralized platform that helps researchers evaluate generated ligand compounds and identify the most promising candidates for further research and development.
+ 
+In addition, AI and bioinformatics tools are powerful, but they’re often hard for new scientists to access and interpret. Navigating multiple platforms, understanding outputs, and connecting results into meaningful insights can create a steep learning curve during the drug discovery process.
+
+Our solution: a centralized platform that simplifies early-stage drug exploration.
+
+🔬 What we built
+- A dashboard that analyzes proteins and ligands from just two inputs: PDB and SDF files
+- Interactive 3D visualization of protein–ligand structures using 3Dmol.js
+- Integration with Tamarind.bio’s API to generate novel ligand candidates for a protein target, predict protein-ligand docking, and ADMET predictions. 
+
+
+⚙️ Under the hood
+- Tamarind API powering ligand generation (DrugFlow), protein–ligand modeling (PLACER), and ADMET-AI predictions to evaluate compound safety compared to approved DrugBank drugs
+- RDKit to convert SDF → SMILES
+- Next.js + React frontend
+- Convex backend for serverless functions and data
+
+💡 Why this matters
+Our goal was to lower the barrier to computational drug discovery by:
+- Centralizing multiple bioinformatics tools
+- Explaining tools and results in a way that new researchers can understand
+- Helping scientists identify promising compounds faster during the exploratory phase of research.
+
 ## Key Features
 
 -   **Protein & Ligand Upload:** Users can upload protein (PDB) and ligand (SDF) files to initiate an analysis.
