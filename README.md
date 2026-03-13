@@ -10,6 +10,8 @@ This repository contains the source code for a web application developed for the
 -   **Result Retrieval & Display:** Fetch and display prediction results, including novel ligand structures.
 -   **Sample Report Page:** A comprehensive demo page (`/demo`) showcasing the application's analysis and visualization capabilities with sample data.
 -   **ADMET Score Analysis:** Download detailed CSV reports of ADMET prediction scores for generated ligands.
+    - convert .sdf files to SMILES with RDKit
+    - access Tamarind API to utilize ADMET-AI for scores analysis and generate a saftey summary plot of molecule’s predicted ADMET property ranks compared to all approved drugs on DrugBank
 
 ## Tech Stack
 
